@@ -1,0 +1,55 @@
+1. What features are you going to implement and how?
+
+   Following is a list of features I plan to implement:
+   1. Launch program in forground and background
+      Fork new processes and exec the cmd
+      if it's foreground, block parent process
+
+   2. IO direction
+      Collect program output in buffer and write to file
+
+   3. Pipe
+      Exec the piped cmd in sequence, feeding output of
+      the previous one to the next
+
+   4. Parentheses
+      Implement parenthese match and determine the order
+      to execute cmd
+      
+   5. Conditional
+      Similar as pipe, but exec the latter cmd depending
+      on whether condition satisfied
+
+   6. Internal commands
+      Write internal commands as functions()
+
+   7. Clean zombie processes
+      Check for zombie process at certain point (e.g. when
+      user run a cmd)
+
+
+--------------------------------------
+2. What syscalls are you going to use?
+  
+   Main syscall is fork(), exec()
+   Others include wait(), open(), read(), write(), close()
+
+
+--------------------------------------
+3. How to implement pipes?
+
+   1. First parse the command line and seperate the piped cmd
+      store them in an array
+   2. Run the first cmd, collect its output, and use that as
+      input to run the second cmd
+   3. Repeat step 2 until all cmd are executed
+
+
+--------------------------------------
+4. How are you going to handle errors, return status, etc?
+
+   For errors, define a set of error codes, and return
+   appropriate error code when error occurs
+   Similarly for return status   
+ 
+   
